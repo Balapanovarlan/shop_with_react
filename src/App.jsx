@@ -1,11 +1,12 @@
-import { Button } from "@mui/material"
-import { BrowserRouter, Routes,  Route } from "react-router"
+import {  RouterProvider } from "react-router"
+import router from "./constants/routes"
+
 
 function App() {
   return (
-    <BrowserRouter>
-      <Button>Check</Button>
-    </BrowserRouter>
+    <RouterProvider router={router}>
+
+    </RouterProvider>
   )
 }
 
