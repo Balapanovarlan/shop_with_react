@@ -1,7 +1,21 @@
 .wrapper{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.container__ProdCards{
+    display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
+}
+
+.container__Pagination{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
 }

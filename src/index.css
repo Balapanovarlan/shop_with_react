@@ -1,6 +1,10 @@
 :root{
     --colors__white : #ffffff;
-    --colors__black : #000000;
+    --colors__black : #3B3A3D;
+    --colors__green : #7AA889;
+    --colors__purple: #997AA8;
+    --colors__dark: #27263D;
+    --colors__gray: #6E6C78;
 }
 
 html{

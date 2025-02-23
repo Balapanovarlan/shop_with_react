@@ -1,5 +1,27 @@
-.container{
-    display: flex;  
-    justify-content: center;
-    padding: 60px;
+.header{
+    padding: 1.6rem;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
+.wrapper__btns{
+    display: flex;
+    gap: 0.8rem;
+}
+
+.search{
+    font-size: large;
+}
+
+.logo{
+    width: 7rem;
+}
+
+.btn{
+    width: 4rem;
+}
+
+
