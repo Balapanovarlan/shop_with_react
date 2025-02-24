@@ -1,7 +1,8 @@
+import CartList from "../../features/Cart/CartList/CartList"
 
 const Cart = () => {
   return (
-    <div>Cart</div>
+    <CartList></CartList>
   )
 }
 

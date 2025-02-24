@@ -22,12 +22,9 @@ const ProductsList = () => {
         axios
             .get(`https://dummyjson.com/products/category/${category}`)
             .then(response=>{
-                const totalProducts = response.data.total;
-                console.log(totalProducts);
-                
+                const totalProducts = response.data.total;              
                 setTotalPages(Math.ceil(totalProducts/LIMIT));
             })
-            console.log(page);
             
         const URL = category 
             ? `https://dummyjson.com/products/category/${category}?limit=${LIMIT}&skip=${(page-1)*LIMIT}`
@@ -36,7 +33,6 @@ const ProductsList = () => {
         axios
             .get(URL)
             .then(response=>{
-                console.log(response.data.products);
                 setProducts(response.data.products);
             })
             .finally(()=>{

@@ -14,7 +14,7 @@ const CategoryList = () => {
         axios
             .get(`https://dummyjson.com/products/categories`)
             .then(response=>{
-                console.log(response.data);
+                // console.log(response.data);
                 
                 setCategories(response.data);
             })

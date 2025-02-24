@@ -10,6 +10,11 @@ const ProductCard = ({
     description,
     price,
     id,
+    quantity,
+    isInCart = false,
+    onAdd,
+    onDecrease,
+    onDelete,
     
 }) => {
     
@@ -27,6 +32,7 @@ const ProductCard = ({
             id,
             price,
             title,
+            cardImage,
             quantity:1,
         }
    
@@ -43,28 +49,43 @@ const ProductCard = ({
     
     return (
         <Card className={styles.card}>
-        <CardMedia 
-            className={styles.card_image}
-            image={cardImage}
-            title = {title}
-        />
-        <CardContent>
-            <Typography gutterBottom variant='h5' component={'div'}> 
-                {title}
-            </Typography>
-            <Typography>
-                {description}
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button size='small'  onClick = {handleAddToCart} >
-                Buy {price}$</Button>
-            <Button size='small' variant='text' 
-            >Save</Button>
-        </CardActions>
-
-
-    </Card>
+            <CardMedia 
+                className={styles.card_image}
+                image={cardImage}
+                title = {title}
+            />
+            <CardContent>
+                <Typography gutterBottom variant='h5' component={'div'}> 
+                    {title}
+                </Typography>
+                <Typography>
+                    {description}
+                </Typography>
+                <Typography>
+                    Price: {price}$
+                </Typography>
+                {isInCart&&(
+                    <Typography>Quantity: {quantity}</Typography>
+                )}
+            </CardContent>
+            <CardActions>
+                {isInCart ? (
+                     <>
+                        <Button size='small' onClick={onAdd}>+</Button>
+                        <Button size='small' onClick={onDecrease}>-</Button>
+                        <Button size='small' onClick={onDelete}>Delete</Button>
+                    </>    
+                ):(
+                    <>
+                    
+                        <Button size='small'  onClick = {handleAddToCart} >
+                        Buy {price}$</Button>
+                        <Button size='small' variant='text' 
+                        >Save</Button>
+                    </>
+                )}      
+            </CardActions>
+        </Card>
   )
 }
 
