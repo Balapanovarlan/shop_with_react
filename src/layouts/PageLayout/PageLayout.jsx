@@ -1,27 +1,25 @@
-
-import Sidebar from "../../components/Sidebar/Sidebar";
+import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header"
-import { Outlet } from 'react-router-dom';
+import Sidebar from "../../components/Sidebar/Sidebar"
 
-import styles from './PageLayout.module.css';
+import styles from "./PageLayout.module.css";
 
-const PageLayout = () => { 
-  return (
-    <div className={styles.wrapper}>
-        <Header/>
+const PageLayout = () => {
+    return (
+        <div className={styles.wrapper}>
+            <Header />
 
-        <div className={styles.contentWrapper}>
-            <Sidebar></Sidebar>
-            <main className={styles.main}>
-                {/* Рендерим все компоненты */}
-                <Outlet/>  {/* рендер всех страниц(дочерние элементы) */}
-            </main>
+            <div className={styles.contentWrapper}>
+                <Sidebar />
+                <main className={styles.main}>
+                    <Outlet /> {/* рендер всех страниц */}
+                </main>
+            </div>
+
+            <footer>Footer</footer>
+
         </div>
-        
-        <footer>Footer</footer>
-
-    </div>
-  )
+    )
 }
 
 export default PageLayout

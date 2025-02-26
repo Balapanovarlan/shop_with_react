@@ -1,11 +1,12 @@
-import ProductsList from "../../features/product/ProductsList/ProductsList"
+import ProductsList from "../../features/Product/ProductsList/ProductsList"
+import styles from './Home.module.css';
 
 const Home = () => {
-  return (
-    <div>
-        <ProductsList></ProductsList>
-    </div>
-  )
+    return (
+        <div className={styles.wrapper}>
+            <ProductsList />
+        </div>
+    )
 }
 
 export default Home

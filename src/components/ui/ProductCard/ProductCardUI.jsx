@@ -1,56 +1,24 @@
 import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
-import React from 'react'
-import Button from '../Button/Button'
-import styles from './ProductCard.module.css'
-import { CART } from '../../../constants/constants'
+import Button from '../Button/Button';
+import styles from './ProductCard.module.css';
 
-const ProductCard = ({
+const ProductCardUI = ({
     cardImage,
     title,
     description,
     price,
-    id,
+    handleAddToCart,
     quantity,
-    isInCart = false,
+    isInCart ,
     onAdd,
     onDecrease,
     onDelete,
-    
+
 }) => {
-    
-
-    const getCart = ()=>{
-        const cart = localStorage.getItem(CART);
-        return cart ? JSON.parse(cart):[];
-    }
-
-    const handleAddToCart = () =>{
-        
-        const cart = getCart();
-
-        const product = {
-            id,
-            price,
-            title,
-            cardImage,
-            quantity:1,
-        }
-   
-        const foundedItem = cart.find((item)=>item.id === product.id)
-        if (foundedItem) {
-            foundedItem.quantity +=1;
-        }else{
-            cart.push(product);
-        }
-    
-        localStorage.setItem(CART,JSON.stringify(cart));
-        
-    }
-    
     return (
         <Card className={styles.card}>
             <CardMedia 
-                className={styles.card_image}
+                className={styles.card__image}
                 image={cardImage}
                 title = {title}
             />
@@ -86,7 +54,7 @@ const ProductCard = ({
                 )}      
             </CardActions>
         </Card>
-  )
+    )
 }
 
-export default ProductCard
+export default ProductCardUI

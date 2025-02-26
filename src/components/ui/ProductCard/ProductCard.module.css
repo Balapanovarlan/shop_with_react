@@ -1,8 +1,8 @@
-.card{
+.card {
     max-width: 22rem;
     width: 100%;
-    
 }
-.card_image{
+
+.card__image {
     height: 20rem;
 }

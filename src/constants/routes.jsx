@@ -3,27 +3,27 @@ import PageLayout from "../layouts/PageLayout/PageLayout";
 import Home from "../pages/Home/Home";
 import Cart from "../pages/Cart/Cart";
 import Product from "../pages/Product/Product";
-import { PageRoutes } from "./pageRoutes";
+import { pageRoutes } from "./pageRoutes";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <PageLayout/>,
+        element: <PageLayout />,
         children: [
             {
-                path: PageRoutes.commonRoutes.home,
+                path: pageRoutes.commonRoutes.home,
                 element: <Home />,
             },
             {
-                path: PageRoutes.commonRoutes.category,
+                path: pageRoutes.commonRoutes.category,
                 element: <Home />,
             },
             {
-                path: PageRoutes.cartRoutes.cart,
+                path: pageRoutes.cartRoutes.cart,
                 element: <Cart />,
             },
             {
-                path: PageRoutes.productRoutes.product,
+                path: pageRoutes.productRoutes.product,
                 element: <Product />,
             },
         ],

@@ -1,5 +1,5 @@
-import {ReactComponent as Logo} from '../assets/icons/icon-logo.svg'
+// import { ReactComponent as Logo } from '../assets/icons/logo.svg?react';
 
-export const Icons = {
-    Logo,
-}
+// export const Icons = {
+//     Logo,
+// };

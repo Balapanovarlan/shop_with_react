@@ -1,24 +1,26 @@
-import styles from './Header.module.css';
-import logo from '../../assets/icons/icon-logo.svg'
-import heart from '../../assets/icons/icon-heart.svg'
-import cart from '../../assets/icons/icon-cart.svg'
-import { Link } from 'react-router-dom';
-import {PageRoutes} from '../../constants/pageRoutes'
+import logo from '../../assets/icons/icon-logo.svg';
+import heart from '../../assets/icons/icon-heart.svg';
+import cart from '../../assets/icons/icon-cart.svg';
 
+import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
+import { pageRoutes } from '../../constants/pageRoutes';
+import Search from '../Search/Search';
 
 const Header = () => {
-  return (
-    <header className={styles.header}>
-        <img className={styles.logo} src={logo} alt="logo" />
-        <div className={styles.wrapper__search}>
-          <input type="search" placeholder='search' className={styles.search} />
-        </div>
-        <div className={styles.wrapper__btns}>
-          <Link to={PageRoutes.cartRoutes.cart}><img className={styles.btn} src={cart} alt="cart" /></Link>
-          <Link to={''}><img className={styles.btn} src={heart} alt="heart" /></Link>
-        </div>
-    </header>
-  )
+    return (
+        <header className={styles.header}>
+            <Link to={pageRoutes.commonRoutes.home}><img src={logo} alt="logo" className={styles.logo}/></Link>
+
+            <Search />
+
+            <div className={styles.wrapper__btns}>
+                <Link to={pageRoutes.cartRoutes.cart} className={styles.btn}><img src={cart} alt="cart" className={styles.icons}/></Link>
+                <Link to={""} className={styles.btn}><img src={heart} alt="heart" className={styles.icons}/></Link>
+            </div>
+
+        </header>
+    )
 }
 
 export default Header

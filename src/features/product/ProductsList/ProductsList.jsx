@@ -1,57 +1,62 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import styles from './ProductsList.module.css';
+import { CircularProgress, Pagination, Stack } from "@mui/material";
 import axios from "axios";
-import ProductListItem from "../ProductListItem/ProductListItem";
-import ProductCard from "../../../components/ui/ProductCard/ProductCard";
-import { Pagination, Stack } from "@mui/material";
+
+import styles from './ProductsList.module.css';
+import { SERVER_URL } from "../../../constants/constants";
+import ProductCard from "../ProductCard/ProductCard";
+
 
 const ProductsList = () => {
-    const {category} = useParams();
-    const [products,  setProducts] = useState([]);
+    const { category } = useParams();
+
+    const [products, setProducts] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(1);
     const LIMIT = 9;
     const [totalPages, setTotalPages] = useState();
 
     useEffect(()=>{setPage(1);},[category]);
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         setIsLoading(true);
 
         axios
             .get(`https://dummyjson.com/products/category/${category}`)
             .then(response=>{
-                const totalProducts = response.data.total;              
+                const totalProducts = response.data.total;
                 setTotalPages(Math.ceil(totalProducts/LIMIT));
             })
-            
-        const URL = category 
-            ? `https://dummyjson.com/products/category/${category}?limit=${LIMIT}&skip=${(page-1)*LIMIT}`
-            : "https://dummyjson.com/products?limit=10&skip=0";
 
+        const url = category
+            ? `https://dummyjson.com/products/category/${category}?limit=${LIMIT}&skip=${(page-1)*LIMIT}`
+            : `${SERVER_URL}/products?limit=10&skip=0`;
         axios
-            .get(URL)
-            .then(response=>{
-                setProducts(response.data.products);
+            .get(url)
+            .then(res => {
+                if (res.status === 200) {
+                    setProducts(res.data.products);
+                }
             })
-            .finally(()=>{
+            .catch(() => {
+
+            })
+            .finally(() => {
                 setIsLoading(false);
-            })
-        
-        // сделать запрос на товаров для категории
-    },[category,page]);
+            });
+    }, [category, page]);
 
     const handleChangePage = (_, value) => {
         setPage(value);
     };
 
-    if (isLoading) {
-        return (
-            <div>   
-                Идет загрузка..
-            </div>
-        )
+    if (isLoading || !products) {
+        <CircularProgress />
+    }
+
+    if (!products) {
+        return null;
     }
 
     return (
@@ -94,3 +99,9 @@ const ProductsList = () => {
 }
 
 export default ProductsList
+
+/*
+    1) Сделать компонент ProductCard, который будет рендерить UI компонент и содержать всю логику
+    2) Переименовать старый ProductCard -> ProductCardUI и вытащить всю логику из него и добавить props handleAddToCart
+    3) В ProductsList поменять компонент с UI на ProductCard
+*/

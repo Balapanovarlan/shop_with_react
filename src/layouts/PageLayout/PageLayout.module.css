@@ -1,14 +1,14 @@
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: column;
-    gap: 3rem; 
+    gap: 3rem;
 }
 
-.contentWrapper{
+.contentWrapper {
     display: flex;
 }
 
-.main{
+.main {
     width: 100%;
     padding: 3rem;
 }

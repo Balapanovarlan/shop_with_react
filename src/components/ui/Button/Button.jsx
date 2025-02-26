@@ -1,6 +1,5 @@
-import React from 'react'
 import styles from './Button.module.css';
-import { buttonClasses, Button as  ButtonMUI} from '@mui/material';
+import { Button as ButtonMUI } from '@mui/material';
 import cn from 'classnames';
 
 const Button = ({
@@ -10,16 +9,16 @@ const Button = ({
     onClick,
     className,
 }) => {
-  return (
-    <ButtonMUI 
-        variant = {variant} 
-        size = {size} 
-        onClick={onClick}
-        className={cn(styles.btn, className)}
-  >
-        {children}
-    </ButtonMUI>
-  )
+    return (
+        <ButtonMUI
+            variant={variant}
+            size={size}
+            onClick={onClick}
+            className={cn(styles.btn, className)}
+        >
+            {children}
+        </ButtonMUI>
+    )
 }
 
 export default Button

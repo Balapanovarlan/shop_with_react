@@ -1,16 +1,27 @@
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
-    
     gap: 1.6rem;
 
     height: 100dvh;
     position: sticky;
     top: 0;
 
-    border: 1px solid black;
+    border: 1px solid #000;
 
     width: 28rem;
     max-width: 28rem;
+
     padding: 3rem 1.6rem;
+}
+
+.sidebar__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.sidebar__item {
+    color: var(--colors__black);
+    font-size: 1.4rem;
 }

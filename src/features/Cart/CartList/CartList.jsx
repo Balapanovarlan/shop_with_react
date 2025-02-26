@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ProductCard from '../../../components/ui/ProductCard/ProductCard';
+import ProductCardUI from '../../../components/ui/ProductCard/ProductCardUI';
 import { CART, SERVER_URL } from '../../../constants/constants';
 import Button from '../../../components/ui/Button/Button';
 import { Typography } from '@mui/material';
@@ -74,7 +74,7 @@ const CartList = () => {
         <div className={styles.cartProducts__container}>
             {
             cart.map(product=>(
-                <ProductCard
+                <ProductCardUI
                     key={product.id}
                     isInCart = {true}
                     title = {product.title}
