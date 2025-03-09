@@ -13,13 +13,20 @@ const cartRoutes = {
 const home = "/";
 const category = "/category/:category?";
 
+const favorite = "/favorite";
+const favoriteRoutes = {
+    favorite: favorite,
+}  
+
 const commonRoutes = {
     home: home,
     category: category,
+
 };
 
 export const pageRoutes = {
     commonRoutes,
     cartRoutes,
     productRoutes,
+    favoriteRoutes
 };

@@ -5,6 +5,7 @@ import Button from '../../../components/ui/Button/Button';
 import { Typography } from '@mui/material';
 import axios from 'axios';
 import styles from './CartList.module.css';
+import { handleAddProduct, handleDecreaseProduct, handleDeleteFromCart } from '../../../utils/cartUtils';
 
 const CartList = () => {
 
@@ -14,41 +15,6 @@ const CartList = () => {
         const storedCart = JSON.parse(localStorage.getItem(CART)) || [];
         setCart(storedCart);
     },[]);
-
-    const updateLocalStorage = (updatedCart)=>{
-        localStorage.setItem(CART, JSON.stringify(updatedCart));
-    }
-
-    const handleAddProduct= (id)=>{
-        const updatedCart = cart.map(item=>{
-            if (item.id===id) {
-                return {...item, quantity: item.quantity+1}
-            }
-            return item;
-        });
-        setCart(updatedCart);
-        updateLocalStorage(updatedCart);
-    }
-
-    const handleDecreaseProduct=(id) =>{
-        const updatedCart = cart.map(item=>{
-            if (item.id === id ) {
-                return {...item, quantity: item.quantity - 1};
-            }
-            return item;
-        })
-        .filter(item => item.quantity > 0);
-
-        setCart(updatedCart);
-        updateLocalStorage(updatedCart);
-    };
-
-
-    const handleDeleteFromCart=(id)=>{
-        const updatedCart = cart.filter(item => item.id !== id);
-        setCart(updatedCart);
-        updateLocalStorage(updatedCart);
-    }
 
     const handleBuyCart = async()=>{
         try {
@@ -65,7 +31,6 @@ const CartList = () => {
         }
     }
 
-
     const totalSum = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const roundedTotalSum = Math.round(totalSum*100)/100;
 
@@ -81,9 +46,9 @@ const CartList = () => {
                     cardImage={product.cardImage}
                     quantity = {product.quantity}
                     price={product.price}
-                    onAdd = {()=> handleAddProduct(product.id)}
-                    onDecrease = {()=> handleDecreaseProduct(product.id)}
-                    onDelete = {()=>handleDeleteFromCart(product.id)}
+                    onAdd = {()=> handleAddProduct( cart,setCart, product.id)}
+                    onDecrease = {()=> handleDecreaseProduct(cart,setCart,product.id)}
+                    onDelete = {()=>handleDeleteFromCart(cart,setCart,product.id)}
                 />
             ))}
         </div>

@@ -8,12 +8,13 @@ const ProductCardUI = ({
     description,
     price,
     handleAddToCart,
+    handleAddToFavorite,
     quantity,
-    isInCart ,
+    isInCart = false ,
+    isInFavorite = false,
     onAdd,
     onDecrease,
     onDelete,
-
 }) => {
     return (
         <Card className={styles.card}>
@@ -36,21 +37,27 @@ const ProductCardUI = ({
                     <Typography>Quantity: {quantity}</Typography>
                 )}
             </CardContent>
-            <CardActions>
+            <CardActions>                
                 {isInCart ? (
                      <>
                         <Button size='small' onClick={onAdd}>+</Button>
                         <Button size='small' onClick={onDecrease}>-</Button>
                         <Button size='small' onClick={onDelete}>Delete</Button>
                     </>    
-                ):(
+                ): isInFavorite?(
                     <>
-                    
                         <Button size='small'  onClick = {handleAddToCart} >
                         Buy {price}$</Button>
-                        <Button size='small' variant='text' 
-                        >Save</Button>
+                        <Button size='small'  onClick={onDelete}
+                        >Delete</Button>
                     </>
+                ): (
+                    <>
+                        <Button size='small'  onClick = {handleAddToCart} >
+                        Buy {price}$</Button>
+                        <Button size='small' variant='text'  onClick={handleAddToFavorite}
+                        >Save</Button>
+                     </>
                 )}      
             </CardActions>
         </Card>

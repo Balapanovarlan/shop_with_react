@@ -1,5 +1,6 @@
 import ProductCardUI from "../../../components/ui/ProductCard/ProductCardUI"
-import { CART } from "../../../constants/constants";
+import { CART, FAV } from "../../../constants/constants";
+import { handleAddToCart, handleAddToFavorite } from "../../../utils/cartUtils";
 
 const ProductCard = ({
     cardImage,
@@ -7,52 +8,18 @@ const ProductCard = ({
     description,
     price,
     id,
-    quantity,
     isInCart = false,
-    onAdd,
-    onDecrease,
-    onDelete,
 }) => {
-    const getCart = () => {
-        const cart = localStorage.getItem(CART);
-
-        return cart ? JSON.parse(cart) : [];
-    }
-
-    const handleAddToCart = () => {
-        const cart = getCart();
-
-        const product = {
-            id,
-            price,
-            title,
-            cardImage,
-            quantity: 1,
-        }
-
-        const foundedItem = cart.find((item) => item.id === product.id);
-
-        if (foundedItem) {
-            foundedItem.quantity += 1;
-        } else {
-            cart.push(product);
-        }
-
-        localStorage.setItem(CART, JSON.stringify(cart));
-    }
-
+    
     return (
         <ProductCardUI
             cardImage={cardImage}
             title={title}
             description={description}
             price={price}
-            handleAddToCart={handleAddToCart}
-            quantity = {quantity}
+            handleAddToCart={()=> handleAddToCart(id,price, title, cardImage)}
+            handleAddToFavorite = {() => handleAddToFavorite(id,price, title, cardImage)}
             isInCart = {isInCart}
-            onAdd = {onAdd}
-            onDecrease = {onDecrease}
-            onDelete =  {onDelete}
         />
     )
 }

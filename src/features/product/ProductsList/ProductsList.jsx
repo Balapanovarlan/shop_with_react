@@ -25,7 +25,7 @@ const ProductsList = () => {
     useEffect(() => { setPage(1); }, [category, debouncedSearch]);
 
     const checkIsDesktop =  useIsDesktop();
-    console.log(checkIsDesktop);
+    //console.log(checkIsDesktop); 
     
     useEffect(() => {
         if (category) {
