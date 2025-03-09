@@ -1,7 +1,8 @@
+import ProductDetails from "../../features/Product/ProductDetails/ProductDetails"
 
 const Product = () => {
     return (
-        <div>Product</div>
+        <ProductDetails/>
     )
 }
 

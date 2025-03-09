@@ -19,6 +19,7 @@
     "react-dom": "^19.0.0",
     "react-mui-sidebar": "^1.6.3",
     "react-router-dom": "^7.1.5",
+    "swiper": "^11.2.5",
     "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {

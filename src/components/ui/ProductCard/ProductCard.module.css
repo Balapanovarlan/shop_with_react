@@ -6,3 +6,8 @@
 .card__image {
     height: 20rem;
 }
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}

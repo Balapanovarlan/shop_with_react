@@ -1,8 +1,10 @@
 import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import Button from '../Button/Button';
 import styles from './ProductCard.module.css';
+import { Link } from 'react-router-dom';
 
 const ProductCardUI = ({
+    id,
     cardImage,
     title,
     description,
@@ -17,26 +19,28 @@ const ProductCardUI = ({
     onDelete,
 }) => {
     return (
-        <Card className={styles.card}>
-            <CardMedia 
-                className={styles.card__image}
-                image={cardImage}
-                title = {title}
-            />
-            <CardContent>
-                <Typography gutterBottom variant='h5' component={'div'}> 
-                    {title}
-                </Typography>
-                <Typography>
-                    {description}
-                </Typography>
-                <Typography>
-                    Price: {price}$
-                </Typography>
-                {isInCart&&(
-                    <Typography>Quantity: {quantity}</Typography>
-                )}
-            </CardContent>
+        <Card className={styles.card} >
+            <Link to= {`/product/${id}`} className={styles.link}>
+                <CardMedia 
+                    className={styles.card__image}
+                    image={cardImage}
+                    title = {title}
+                />
+                <CardContent>
+                    <Typography gutterBottom variant='h5' component={'div'}> 
+                        {title}
+                    </Typography>
+                    <Typography>
+                        {description}
+                    </Typography>
+                    <Typography>
+                        Price: {price}$
+                    </Typography>
+                    {isInCart&&(
+                        <Typography>Quantity: {quantity}</Typography>
+                    )}
+                </CardContent>
+            </Link>
             <CardActions>                
                 {isInCart ? (
                      <>

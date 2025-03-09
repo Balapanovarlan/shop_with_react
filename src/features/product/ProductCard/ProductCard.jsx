@@ -13,6 +13,7 @@ const ProductCard = ({
     
     return (
         <ProductCardUI
+            id = {id}
             cardImage={cardImage}
             title={title}
             description={description}
